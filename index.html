@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mixer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js"></script>
+</head>
+<body>
+  <main>
+    <div>
+      <button id="play" onclick="play(event);">▶</button>
+      <button id="pause" onclick="pause(event);" class="hidden">⏸</button>
+    </div>
+    <div>
+      <label>💤</label>
+      <label for="whitenoise-mute">
+        <input type="radio" name="whitenoise" onchange="setVolume(event);"
+          id="whitenoise-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="whitenoise-low">
+        <input type="radio" name="whitenoise" onchange="setVolume(event);"
+          id="whitenoise-low" value="50">
+        🔉
+      </label>
+      <label for="whitenoise-full">
+        <input type="radio" name="whitenoise" onchange="setVolume(event);"
+          id="whitenoise-full" value="100">
+        🔊
+      </label>
+      <audio id="whitenoise" src="./audio/whitenoise.mp3" loop></audio>
+    </div>
+    <div>
+      <label>💓</label>
+      <label for="heartbeat-mute">
+        <input type="radio" name="heartbeat" onchange="setVolume(event);"
+          id="heartbeat-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="heartbeat-low">
+        <input type="radio" name="heartbeat" onchange="setVolume(event);"
+          id="heartbeat-low" value="50">
+        🔉
+      </label>
+      <label for="heartbeat-full">
+        <input type="radio" name="heartbeat" onchange="setVolume(event);"
+          id="heartbeat-full" value="100">
+        🔊
+      </label>
+      <audio id="heartbeat" src="./audio/heartbeat.mp3" loop></audio>
+    </div>
+    <div>
+      <label>🤫</label>
+      <label for="shh-mute">
+        <input type="radio" name="shh" onchange="setVolume(event);"
+          id="shh-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="shh-low">
+        <input type="radio" name="shh" onchange="setVolume(event);"
+          id="shh-low" value="50">
+        🔉
+      </label>
+      <label for="shh-full">
+        <input type="radio" name="shh" onchange="setVolume(event);"
+          id="shh-full" value="100">
+        🔊
+      </label>
+      <audio id="shh" src="./audio/shh.mp3" loop></audio>
+    </div>
+    <div>
+      <label>🌧</label>
+      <label for="rain-mute">
+        <input type="radio" name="rain" onchange="setVolume(event);"
+          id="rain-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="rain-low">
+        <input type="radio" name="rain" onchange="setVolume(event);"
+          id="rain-low" value="50">
+        🔉
+      </label>
+      <label for="rain-full">
+        <input type="radio" name="rain" onchange="setVolume(event);"
+          id="rain-full" value="100">
+        🔊
+      </label>
+      <audio id="rain" src="./audio/rain.mp3" loop></audio>
+    </div>
+    <div>
+      <label>🌩</label>
+      <label for="thunder-mute">
+        <input type="radio" name="thunder" onchange="setVolume(event);"
+          id="thunder-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="thunder-low">
+        <input type="radio" name="thunder" onchange="setVolume(event);"
+          id="thunder-low" value="50">
+        🔉
+      </label>
+      <label for="thunder-full">
+        <input type="radio" name="thunder" onchange="setVolume(event);"
+          id="thunder-full" value="100">
+        🔊
+      </label>
+      <audio id="thunder" src="./audio/thunder.mp3" loop></audio>
+    </div>
+    <div>
+      <label>🏞</label>
+      <label for="river-mute">
+        <input type="radio" name="river" onchange="setVolume(event);"
+          id="river-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="river-low">
+        <input type="radio" name="river" onchange="setVolume(event);"
+          id="river-low" value="50">
+        🔉
+      </label>
+      <label for="river-full">
+        <input type="radio" name="river" onchange="setVolume(event);"
+          id="river-full" value="100">
+        🔊
+      </label>
+      <audio id="river" src="./audio/river.mp3" loop></audio>
+    </div>
+    <div>
+      <label>🌊</label>
+      <label for="wave-mute">
+        <input type="radio" name="wave" onchange="setVolume(event);"
+          id="wave-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="wave-low">
+        <input type="radio" name="wave" onchange="setVolume(event);"
+          id="wave-low" value="50">
+        🔉
+      </label>
+      <label for="wave-full">
+        <input type="radio" name="wave" onchange="setVolume(event);"
+          id="wave-full" value="100">
+        🔊
+      </label>
+      <audio id="wave" src="./audio/wave.mp3" loop></audio>
+    </div>
+    <div>
+      <label>🔥</label>
+      <label for="fire-mute">
+        <input type="radio" name="fire" onchange="setVolume(event);"
+          id="fire-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="fire-low">
+        <input type="radio" name="fire" onchange="setVolume(event);"
+          id="fire-low" value="50">
+        🔉
+      </label>
+      <label for="fire-full">
+        <input type="radio" name="fire" onchange="setVolume(event);"
+          id="fire-full" value="100">
+        🔊
+      </label>
+      <audio id="fire" src="./audio/fire.mp3" loop></audio>
+    </div>
+    <div>
+      <label>🐦</label>
+      <label for="bird-mute">
+        <input type="radio" name="bird" onchange="setVolume(event);"
+          id="bird-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="bird-low">
+        <input type="radio" name="bird" onchange="setVolume(event);"
+          id="bird-low" value="50">
+        🔉
+      </label>
+      <label for="bird-full">
+        <input type="radio" name="bird" onchange="setVolume(event);"
+          id="bird-full" value="100">
+        🔊
+      </label>
+      <audio id="bird" src="./audio/bird.mp3" loop></audio>
+    </div>
+    <div>
+      <label>🦗</label>
+      <label for="cricket-mute">
+        <input type="radio" name="cricket" onchange="setVolume(event);"
+          id="cricket-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="cricket-low">
+        <input type="radio" name="cricket" onchange="setVolume(event);"
+          id="cricket-low" value="50">
+        🔉
+      </label>
+      <label for="cricket-full">
+        <input type="radio" name="cricket" onchange="setVolume(event);"
+          id="cricket-full" value="100">
+        🔊
+      </label>
+      <audio id="cricket" src="./audio/cricket.mp3" loop></audio>
+    </div>
+  </main>
+</body>
+</html>

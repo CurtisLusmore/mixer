@@ -1,0 +1,12 @@
+body {
+  margin: auto;
+  text-align: center;
+}
+
+label, button {
+  font-size: 3em;
+}
+
+.hidden {
+  display: none;
+}
