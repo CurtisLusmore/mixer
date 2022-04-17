@@ -15,16 +15,16 @@ function play() {
   for (const id in ids) {
     document.getElementById(id).play();
   }
-  document.getElementById('play').classList.toggle('hidden');
-  document.getElementById('pause').classList.toggle('hidden');
+  document.getElementById('play').classList.add('hidden');
+  document.getElementById('pause').classList.remove('hidden');
 }
 
 function pause() {
   for (const id in ids) {
     document.getElementById(id).pause();
   }
-  document.getElementById('play').classList.toggle('hidden');
-  document.getElementById('pause').classList.toggle('hidden');
+  document.getElementById('play').classList.remove('hidden');
+  document.getElementById('pause').classList.add('hidden');
 }
 
 let timer;
