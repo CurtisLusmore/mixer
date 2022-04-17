@@ -62,7 +62,7 @@ function setVolume(event) {
 window.addEventListener('load', function () {
   for (const id in ids) {
     const elem = document.getElementById(id);
-    const volume = document.forms[0].elements[id].value;
+    const volume = document.forms[0].elements[id].value / 100;
     const multiplier = ids[id];
     elem.volume = volume * multiplier;
   }
