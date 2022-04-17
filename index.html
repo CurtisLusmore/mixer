@@ -11,8 +11,11 @@
 <body>
   <main>
     <div>
-      <button id="play" onclick="play(event);">▶</button>
-      <button id="pause" onclick="pause(event);" class="hidden">⏸</button>
+      <button id="play" onclick="play();">▶</button>
+      <button id="pause" onclick="pause();" class="hidden">⏸</button>
+      <button onclick="setTimer();">⏱</button>
+      <button onclick="resetTimer();">🔁</button>
+      <span id="timer">00:00</span>
     </div>
     <form>
     <div>

@@ -27,6 +27,31 @@ function pause() {
   document.getElementById('pause').classList.toggle('hidden');
 }
 
+let timer;
+function setTimer() {
+  play();
+  let remaining = new Date(/*20 * 60 * 1000*/ 10 * 1000);
+  const timerSpan = document.getElementById('timer');
+  const pad = n => n < 10 ? '0' + n : n;
+  timerSpan.innerText = `${pad(remaining.getMinutes())}:${pad(remaining.getSeconds())}`;
+  timer = setInterval(function () {
+    remaining.setSeconds(remaining.getSeconds() - 1);
+    if (remaining.getTime() > 0) {
+      timerSpan.innerText = `${pad(remaining.getMinutes())}:${pad(remaining.getSeconds())}`;
+    }
+    else {
+      pause();
+      resetTimer();
+    }
+  }, 1000);
+}
+
+function resetTimer() {
+  clearTimeout(timer);
+  const timerSpan = document.getElementById('timer');
+  timerSpan.innerText = '00:00';
+}
+
 function setVolume(event) {
   const id = event.target.name;
   const volume = event.target.value / 100;
