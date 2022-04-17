@@ -39,6 +39,25 @@
       <audio id="whitenoise" src="./audio/whitenoise.mp3" loop></audio>
     </div>
     <div>
+      <label>👶</label>
+      <label for="lullaby-mute">
+        <input type="radio" name="lullaby" onchange="setVolume(event);"
+          id="lullaby-mute" value="0" checked>
+        🔈
+      </label>
+      <label for="lullaby-low">
+        <input type="radio" name="lullaby" onchange="setVolume(event);"
+          id="lullaby-low" value="50">
+        🔉
+      </label>
+      <label for="lullaby-full">
+        <input type="radio" name="lullaby" onchange="setVolume(event);"
+          id="lullaby-full" value="100">
+        🔊
+      </label>
+      <audio id="lullaby" src="./audio/lullaby.mp3" loop></audio>
+    </div>
+    <div>
       <label>💓</label>
       <label for="heartbeat-mute">
         <input type="radio" name="heartbeat" onchange="setVolume(event);"

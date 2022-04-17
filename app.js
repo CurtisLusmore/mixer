@@ -1,5 +1,6 @@
 const ids = {
   'whitenoise': 0.5,
+  'lullaby': 1.0,
   'heartbeat': 1.0,
   'shh': 1.0,
   'rain': 1.0,
