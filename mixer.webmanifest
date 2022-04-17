@@ -1,0 +1,15 @@
+{
+  "background_color": "white",
+  "description": "A mixer for various relaxing sounds",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "240x240",
+      "type": "image/png"
+    }
+  ],
+  "name": "Mixer",
+  "short_name": "Mixer",
+  "start_url": "./index.html"
+}
