@@ -29,6 +29,7 @@ function pause() {
 
 let timer;
 function setTimer() {
+  clearInterval(timer);
   play();
   let remaining = new Date(20 * 60 * 1000);
   const timerSpan = document.getElementById('timer');
@@ -47,7 +48,7 @@ function setTimer() {
 }
 
 function resetTimer() {
-  clearTimeout(timer);
+  clearInterval(timer);
   const timerSpan = document.getElementById('timer');
   timerSpan.innerText = '00:00';
 }
