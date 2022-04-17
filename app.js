@@ -30,7 +30,7 @@ function pause() {
 let timer;
 function setTimer() {
   play();
-  let remaining = new Date(10 * 1000);
+  let remaining = new Date(20 * 60 * 1000);
   const timerSpan = document.getElementById('timer');
   const pad = n => n < 10 ? '0' + n : n;
   timerSpan.innerText = `${pad(remaining.getMinutes())}:${pad(remaining.getSeconds())}`;
