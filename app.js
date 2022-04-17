@@ -36,6 +36,9 @@ function setVolume(event) {
 
 window.addEventListener('load', function () {
   for (const id in ids) {
-    document.getElementById(id).volume = 0;
+    const elem = document.getElementById(id);
+    const volume = document.forms[0].elements[id].value;
+    const multiplier = ids[id];
+    elem.volume = volume * multiplier;
   }
 });
