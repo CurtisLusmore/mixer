@@ -1,5 +1,6 @@
-const cacheName = 'mixer-v1';
+const cacheName = 'mixer-v2';
 const contentToCache = [
+  '',
   'index.html',
   'app.js',
   'style.css',

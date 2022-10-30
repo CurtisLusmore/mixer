@@ -59,7 +59,9 @@ function resetTimer() {
 
 function setVolume(event) {
   const id = event.target.name;
-  const volume = event.target.value / 100;
+  const value = event.target.value;
+  localStorage.setItem(`mixer-${id}`, value);
+  const volume = value / 100;
   const multiplier = ids[id];
   document.getElementById(id).volume = volume * multiplier;
   setMediaSession();
@@ -67,6 +69,8 @@ function setVolume(event) {
 
 window.addEventListener('load', function () {
   for (const id in ids) {
+    const cacheValue = this.localStorage.getItem(`mixer-${id}`);
+    if (cacheValue) document.forms[0].elements[id].value = cacheValue;
     const elem = document.getElementById(id);
     const volume = document.forms[0].elements[id].value / 100;
     const multiplier = ids[id];
