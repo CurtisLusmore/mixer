@@ -20,6 +20,7 @@ function play() {
   }
   document.getElementById('play').classList.add('hidden');
   document.getElementById('pause').classList.remove('hidden');
+  setMediaSession();
 }
 
 function pause() {
@@ -61,6 +62,7 @@ function setVolume(event) {
   const volume = event.target.value / 100;
   const multiplier = ids[id];
   document.getElementById(id).volume = volume * multiplier;
+  setMediaSession();
 }
 
 window.addEventListener('load', function () {
@@ -70,4 +72,37 @@ window.addEventListener('load', function () {
     const multiplier = ids[id];
     elem.volume = volume * multiplier;
   }
+});
+
+function setMediaSession() {
+  let title = '';
+  for (const id in ids) {
+    const icon = document.getElementById(`${id}-label`).innerText;
+    const volume = document.forms[0].elements[id].value / 100;
+    if (volume > 0) title += icon;
+  }
+  title = title || 'Silence';
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: title,
+    artist: 'Mixer',
+    artwork: [
+      { src: 'favicon.png', sizes: '240x240', type: 'image/png' },
+    ],
+  });
+}
+
+navigator.mediaSession.setActionHandler('play', function () {
+  play();
+  navigator.mediaSession.playbackState = 'playing';
+});
+
+navigator.mediaSession.setActionHandler('pause', function () {
+  pause();
+  navigator.mediaSession.playbackState = 'paused';
+});
+
+navigator.mediaSession.setActionHandler('stop', function () {
+  pause();
+  resetTimer();
+  navigator.mediaSession.playbackState = 'paused';
 });
