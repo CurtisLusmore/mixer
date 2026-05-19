@@ -1,5 +1,3 @@
-navigator.serviceWorker.register('worker.js');
-
 const ids = {
   'whitenoise': 0.5,
   'lullaby': 1.0,
