@@ -1,10 +1,11 @@
-const CACHE_NAME = 'mixer-v1';
+const CACHE_NAME = 'mixer-v2';
 const ASSETS = [
   './',
   './index.html',
   './app.js',
   './style.css',
   './favicon.png',
+  './favicon-192.png',
   './mixer.webmanifest',
   './audio/bird.mp3',
   './audio/cricket.mp3',
