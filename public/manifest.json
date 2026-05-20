@@ -1,18 +1,18 @@
 {
   "name": "Mixer",
   "short_name": "Mixer",
-  "start_url": "/",
+  "start_url": "/mixer/",
   "display": "standalone",
   "background_color": "#121212",
   "theme_color": "#121212",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "/mixer/favicon.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "/favicon-192.png",
+      "src": "/mixer/favicon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
