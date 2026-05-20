@@ -62,7 +62,7 @@ export default function App(): React.ReactElement {
 };
 
 function SoundSlider({ icon, src, isPlaying }: { icon: string, src: string, isPlaying: boolean }): React.ReactElement {
-  const [ volume, setVolume ] = useState(0);
+  const [ volume, setVolume ] = useState(parseInt(localStorage.getItem(`mixer:${icon}`) || '0', 10));
   const ref = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -76,7 +76,9 @@ function SoundSlider({ icon, src, isPlaying }: { icon: string, src: string, isPl
   }, [ isPlaying, volume ]);
 
   function handleChange(_: Event, newValue: number | number[]) {
-    setVolume(newValue as number);
+    const volume = newValue as number;
+    setVolume(volume);
+    localStorage.setItem(`mixer:${icon}`, volume.toString());
   };
 
   return (
@@ -88,7 +90,6 @@ function SoundSlider({ icon, src, isPlaying }: { icon: string, src: string, isPl
         min={0}
         step={50}
         max={100}
-        marks
         sx={{ flex: 1 }}
       />
       <audio ref={ref} src={src} loop />
