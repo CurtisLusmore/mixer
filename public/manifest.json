@@ -17,5 +17,20 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "description": "A mixing board for relaxing sounds to help you sleep.",
+  "screenshots": [
+    {
+      "src": "/mixer/screenshot-desktop.png",
+      "sizes": "2400x1528",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/mixer/screenshot-mobile.png",
+      "sizes": "1008x1914",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
   ]
 }
