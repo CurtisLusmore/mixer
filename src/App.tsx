@@ -100,8 +100,13 @@ function SoundSlider({ icon, src, isPlaying }: { icon: string, src: string, isPl
 function Controls({ isPlaying, setIsPlaying }: { isPlaying: boolean, setIsPlaying: React.Dispatch<React.SetStateAction<boolean>> }): React.ReactElement {
   const [ position, setPosition ] = useState(0);
   const [ duration, setDuration ] = useState(0);
+  const [ startedAt, setStartedAt ] = useState(0);
+  const [ endAt, setEndAt ] = useState(0);
 
   function play() {
+    const now = Date.now();
+    setStartedAt(now);
+    if (duration > 0) setEndAt(now + duration * 1000);
     setIsPlaying(true);
   };
 
@@ -109,6 +114,8 @@ function Controls({ isPlaying, setIsPlaying }: { isPlaying: boolean, setIsPlayin
     setIsPlaying(false);
     setPosition(0);
     setDuration(0);
+    setEndAt(0);
+    setStartedAt(0);
   };
 
   useEffect(() => {
@@ -119,16 +126,17 @@ function Controls({ isPlaying, setIsPlaying }: { isPlaying: boolean, setIsPlayin
 
   useEffect(() => {
     function tick() {
-      if (isPlaying && position < duration) {
-        setPosition(position => position + 1);
+      if (!isPlaying || duration === 0) return;
+      const now = Date.now();
+      if (now >= endAt) {
+        stop();
+        return;
       }
-      if (duration > 0 && position === duration) {
-        setIsPlaying(false);
-      }
+      setPosition(Math.min(duration, (now - startedAt) / 1000));
     };
-    const interval = setInterval(tick, 1000);
+    const interval = setInterval(tick, 100);
     return () => clearInterval(interval);
-  }, [ isPlaying, duration ]);
+  }, [ isPlaying, duration, endAt, startedAt ]);
 
   useEffect(() => {
     navigator.mediaSession.metadata = new MediaMetadata({
@@ -139,7 +147,6 @@ function Controls({ isPlaying, setIsPlaying }: { isPlaying: boolean, setIsPlayin
         { src: '/favicon.png', sizes: '512x512', type: 'image/png' },
       ],
     });
-    console.log({ position, duration });
     navigator.mediaSession.setPositionState({
       duration: duration === 0 ? Infinity : duration,
       position,
@@ -156,12 +163,27 @@ function Controls({ isPlaying, setIsPlaying }: { isPlaying: boolean, setIsPlayin
 
   function handleAddDuration() {
     const step = duration < 60*60 ? 20*60 : 60*60;
+    if (isPlaying) {
+      if (duration === 0) {
+        const now = Date.now();
+        setStartedAt(now);
+        setEndAt(now + step * 1000);
+        setPosition(0);
+        setDuration(step);
+        return;
+      } else {
+        setDuration(duration + step);
+        setEndAt(endAt + step * 1000);
+      }
+    }
     setDuration(duration + step);
   };
 
   function handleResetDuration() {
     setPosition(0);
     setDuration(0);
+    setEndAt(0);
+    setStartedAt(0);
   };
 
   const positionString = position >= 60*60
